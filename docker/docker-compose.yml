@@ -1,0 +1,38 @@
+version: '3.6'
+services:
+  portainer:
+    image: portainer/portainer
+    networks:
+      - keystroke_biometrics_default
+    volumes:
+      - type: volume
+        source: portainer_data
+        target: /data
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    ports:
+      - "9000:9000"
+    command: --admin-password "$$2y$$05$$8fRQHk5mublQVhYe3tpIOOTweH5d6YqrvjV/j7mxSx2O/GaHZ9Uzq"
+
+  flask:
+    image: keystroke_biometrics/flask:latest
+    build:
+      context: ../
+      dockerfile: ./docker/flask.dockerfile
+    networks:
+      - keystroke_biometrics_default
+    volumes:
+      - ../src:/src
+    working_dir: /src
+    ports:
+      - "5000:5000"
+    command: ["python", "index.py"]
+
+networks:
+  keystroke_biometrics_default:
+    driver: bridge
+
+volumes:
+  portainer_data:
+
