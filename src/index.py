@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import pandas
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 
@@ -10,6 +9,11 @@ socketio = SocketIO(app)
 @app.route("/")
 def index():
     return render_template('index.html')
+
+
+@app.route("/playground")
+def playground():
+    return render_template('playground.html')
 
 
 @socketio.on('connect')

@@ -1,6 +1,6 @@
-To run the project`cd` to docker directory 
+To run the project`cd` to docker directory
 
-and run ``docker compose up -d``
+and run `docker-compose up -d`
 
 Portainer is exposed on port `9000`
 
