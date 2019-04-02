@@ -13,7 +13,7 @@ def index():
 
 @app.route("/playground")
 def playground():
-    return render_template('playground.html')
+    return render_template('playground.html', title='Playground')
 
 
 @socketio.on('connect')

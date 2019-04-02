@@ -1,42 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Playground</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename = 'sockets.js') }}"
-    ></script>
-    <script
-      type="text/javascript"
-      src="{{ url_for('static', filename = 'scripts/cookies.js') }}"
-    ></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
-
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename = 'css/style.css') }}"
-    />
-    <script type="text/javascript">
-      //auto expand textarea
-      function adjust_textarea(h) {
-        h.style.height = "20px";
-        h.style.height = h.scrollHeight + "px";
-      }
-      function logout() {
-        setCookie("login", null, 0);
-        window.location.href = "/";
-      }
-      function done(event) {
-        alert("Thanks for cooperation");
-      }
-      const login = getCookie("login");
-      if (!login) window.location.href = "/";
-    </script>
-  </head>
-  <body>
-    <div class="form-style-8">
+{% extends "layout.html"%}
+{% block content %}
+<script type="text/javascript">
+      const userLogin = getCookie("login");
+      if (!userLogin) window.location.href = "/";
+</script>
+<div class="form-style-8">
       <h2>Playground <a href="#" onClick="logout()">Logout</a></h2>
 
       <form onsubmit="event.preventDefault(); done(event);" method="POST">
@@ -88,5 +56,4 @@
         <input type="submit" value="Done" />
       </form>
     </div>
-  </body>
-</html>
+{% endblock content %}

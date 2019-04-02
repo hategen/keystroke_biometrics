@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+        {% if title%}
+             <title> {{title}} </title>
+        {% else %}
+             <title> Keystroke dynamics </title>
+        {% endif %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename = 'sockets.js') }}"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename = 'scripts/cookies.js') }}"
+    ></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename = 'css/style.css') }}"
+    />
+    <script type="text/javascript">
+      //auto expand textarea
+      function adjust_textarea(h) {
+        h.style.height = "20px";
+        h.style.height = h.scrollHeight + "px";
+      }
+      function logout() {
+        setCookie("login", null, 0);
+        window.location.href = "/";
+      }
+      function done(event) {
+        alert("Thanks for cooperation");
+      }
+      //auto expand textarea
+      function adjust_textarea(h) {
+        h.style.height = "20px";
+        h.style.height = h.scrollHeight + "px";
+      }
+      function login(e) {
+        const login = e.target[0].value;
+        console.warn(`You've entered as ${login}`);
+        setCookie("login", login, 1);
+        window.location.href = "/playground";
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+  </body>
+</html>
