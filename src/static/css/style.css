@@ -1,6 +1,8 @@
+body{
+    font-family: 'Roboto Slab', serif;
+}
 .form-style-8 {
-  font-family: "Open Sans Condensed", arial, sans;
-  width: 500px;
+  width: 50%;
   padding: 30px;
   background: #ffffff;
   margin: 50px auto;
@@ -9,9 +11,9 @@
   -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.22);
 }
 .form-style-8 h2 {
-  background: #4d4d4d;
+  background: #daf3ff;
   text-transform: uppercase;
-  font-family: "Open Sans Condensed", sans-serif;
+  font-family: 'Roboto Slab', serif;
   color: #797979;
   font-size: 18px;
   font-weight: 100;
@@ -40,7 +42,6 @@
   border-bottom: 1px solid #ddd;
   background: transparent;
   margin-bottom: 10px;
-  font: 16px Arial, Helvetica, sans-serif;
   height: 45px;
 }
 .form-style-8 textarea {
@@ -57,7 +58,6 @@
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-family: "Open Sans Condensed", sans-serif;
   font-size: 14px;
   padding: 8px 18px;
   text-decoration: none;
@@ -72,5 +72,4 @@
 p {
   color: #122e2e;
   font-size: 20px;
-  font-weight: 900;
 }
