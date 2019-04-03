@@ -1,59 +1,61 @@
 {% extends "layout.html"%}
 {% block content %}
-<script type="text/javascript">
-      const userLogin = getCookie("login");
-      if (!userLogin) window.location.href = "/";
+<script type="module">
+    import {getCookie} from './static/scripts/cookies.js'
+
+    const userLogin = getCookie("login");
+    if (!userLogin) window.location.href = "/";
 </script>
 <div class="form-style-8">
-      <h2>Playground <a href="#" onClick="logout()">Logout</a></h2>
+    <h2>Playground <a href="#" onClick="logout()">Logout</a></h2>
 
-      <form onsubmit="event.preventDefault(); done(event);" method="POST">
+    <form onsubmit="event.preventDefault(); done(event);" method="POST">
         <h3>
-          This is playground. Here is your daily task. Fill all fields with the
-          information above it
+            This is playground. Here is your daily task. Fill all fields with the
+            information above it
         </h3>
         <p>"Hello"</p>
-        <input type="text" name="field4" placeholder="Hello?" />
+        <input type="text" name="field4" placeholder="Hello?"/>
         <p>
-          Write it in the textarea below: <br />"A programmer, developer, coder
-          or software engineer is a person who creates computer software. The
-          term computer programmer can refer to a specialist in one area of
-          computers, or to a generalist who writes code for many kinds of
-          software."
+            Write it in the textarea below: <br/>"A programmer, developer, coder
+            or software engineer is a person who creates computer software. The
+            term computer programmer can refer to a specialist in one area of
+            computers, or to a generalist who writes code for many kinds of
+            software."
         </p>
         <textarea
-          placeholder="Write here text above"
-          onkeyup="adjust_textarea(this)"
-          size="5"
+                placeholder="Write here text above"
+                onkeyup="adjust_textarea(this)"
+                size="5"
         ></textarea>
 
         <p>"Write here: Donald Trump is the best president of USA"</p>
         <input
-          type="text"
-          name="field2"
-          placeholder="What do do you think about Trump?"
+                type="text"
+                name="field2"
+                placeholder="What do do you think about Trump?"
         />
 
         <p>"Is today Monday? Write yes or no"</p>
-        <input type="text" name="field3" placeholder="Is today Monday?" />
+        <input type="text" name="field3" placeholder="Is today Monday?"/>
         <p>"Write any color"</p>
-        <input type="text" name="field6" placeholder="Color?" />
+        <input type="text" name="field6" placeholder="Color?"/>
         <p>"Who played main role in the movie with Jackie Chan"</p>
-        <input type="text" name="field4" placeholder="Who" />
+        <input type="text" name="field4" placeholder="Who"/>
 
         <p>What is your favorite month</p>
-        <input type="text" name="field5" placeholder="Month" />
+        <input type="text" name="field5" placeholder="Month"/>
         <p>
-          Write here: <br />"The terms Vanilla JavaScript and Vanilla JS refer
-          to JavaScript not extended by any frameworks or additional libraries.
-          Scripts written in Vanilla JS are plain JavaScript code."
+            Write here: <br/>"The terms Vanilla JavaScript and Vanilla JS refer
+            to JavaScript not extended by any frameworks or additional libraries.
+            Scripts written in Vanilla JS are plain JavaScript code."
         </p>
         <textarea
-          placeholder="Write here text above"
-          onkeyup="adjust_textarea(this)"
-          size="5"
+                placeholder="Write here text above"
+                onkeyup="adjust_textarea(this)"
+                size="5"
         ></textarea>
-        <input type="submit" value="Done" />
-      </form>
-    </div>
+        <input type="submit" value="Done"/>
+    </form>
+</div>
 {% endblock content %}

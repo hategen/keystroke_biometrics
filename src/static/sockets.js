@@ -1,10 +1,15 @@
-console.log('YO')
+export default class IOSocket {
+    constructor(domain = document.domain, port = location.port) {
+        this.socket = io.connect(`http://${document.domain}:${location.port}`);
+    }
 
-window.addEventListener('load',()=>{
-const socket = io.connect('http://' + document.domain + ':' + location.port);
-    socket.on('response', (msg) => {
-        console.log(`RESPONSE: ${msg}`);
-    });
+    disconnect() {
+        this.socket.disconnect()
+    }
 
-    socket.emit('metric', { data: 'somedata' });
-})
+    emitMetric(metric = {}) {
+        this.socket.emit('metric', metric);
+    }
+}
+
+
