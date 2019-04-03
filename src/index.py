@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
+import csv
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 
+def writeToCsv():
+    print(1)
 
 @app.route("/")
 def index():
@@ -29,7 +32,7 @@ def disconnect():
 @socketio.on('metric')
 def metric(json, methods=['GET', 'POST']):
     app.logger.debug('metric: ' + str(json))
-    socketio.emit('response', json)
+
 
 
 if __name__ == '__main__':
