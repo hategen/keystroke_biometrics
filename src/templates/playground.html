@@ -7,7 +7,7 @@
     if (!userLogin) window.location.href = "/";
 </script>
 <div class="form-style-8">
-    <h2>Playground <a href="#" onClick="logout()">Logout</a></h2>
+    <h2>Playground <a href="#" id="logout">Logout</a></h2>
 
     <form onsubmit="event.preventDefault(); done(event);" method="POST">
         <h3>
@@ -15,7 +15,7 @@
             information above it
         </h3>
         <p>"Hello"</p>
-        <input type="text" name="field4" placeholder="Hello?"/>
+        <input type="text" name="field_hello" placeholder="Hello?"/>
         <p>
             Write it in the textarea below: <br/>"A programmer, developer, coder
             or software engineer is a person who creates computer software. The
@@ -27,24 +27,25 @@
                 placeholder="Write here text above"
                 onkeyup="adjust_textarea(this)"
                 size="5"
+                name="field_textarea"
         ></textarea>
 
         <p>"Write here: Donald Trump is the best president of USA"</p>
         <input
                 type="text"
-                name="field2"
+                name="field_trump"
                 placeholder="What do do you think about Trump?"
         />
 
         <p>"Is today Monday? Write yes or no"</p>
-        <input type="text" name="field3" placeholder="Is today Monday?"/>
+        <input type="text" name="field_monday" placeholder="Is today Monday?"/>
         <p>"Write any color"</p>
-        <input type="text" name="field6" placeholder="Color?"/>
+        <input type="text" name="field_color" placeholder="Color?"/>
         <p>"Who played main role in the movie with Jackie Chan"</p>
-        <input type="text" name="field4" placeholder="Who"/>
+        <input type="text" name="field_Chan" placeholder="Who"/>
 
         <p>What is your favorite month</p>
-        <input type="text" name="field5" placeholder="Month"/>
+        <input type="text" name="field_month" placeholder="Month"/>
         <p>
             Write here: <br/>"The terms Vanilla JavaScript and Vanilla JS refer
             to JavaScript not extended by any frameworks or additional libraries.
@@ -54,6 +55,7 @@
                 placeholder="Write here text above"
                 onkeyup="adjust_textarea(this)"
                 size="5"
+                name="field_tvanilla"
         ></textarea>
         <input type="submit" value="Done"/>
     </form>

@@ -60,6 +60,14 @@
                 login(e);
             })
         }
+        const logoutButton = document.getElementById('logout')
+        if (logoutButton) {
+            logoutButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                logout(e);
+            })
+        }
+
 
 
     </script>

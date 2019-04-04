@@ -25,6 +25,7 @@ services:
     volumes:
       - ../src:/src
     working_dir: /src
+    restart: on-failure
     ports:
       - "5000:5000"
     command: ["python", "index.py"]
