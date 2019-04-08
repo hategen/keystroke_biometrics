@@ -68,6 +68,11 @@
             })
         }
 
+        document.addEventListener('keyup',e =>{
+            if(e.target.matches('textarea')){
+                adjust_textarea(e.target)
+            }
+        })
 
 
     </script>

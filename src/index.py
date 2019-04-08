@@ -8,17 +8,21 @@ socketio = SocketIO(app)
 
 
 def writeToCsv(batch):
-    with open('metrics.csv', mode='a+') as csv_file:
-        fieldnames = ['login', 'type', 'key', 'timestamp', 'input']
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames, delimiter=',')
-        sniffer = csv.Sniffer()
-        has_header = False
-        line = csv_file.readline()
+    has_header = False
+    fieldnames = ['login', 'type', 'key', 'timestamp', 'input']
 
+    with open('metrics.csv', mode='r') as csv_file:
+        line = csv_file.readline()
+        print(line)
+        sniffer = csv.Sniffer()
         if len(line) > 0:
             has_header = sniffer.has_header(line)
 
-        if not has_header:
+    with open('metrics.csv', mode='a+') as csv_file:
+
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames, delimiter=',')
+
+        if has_header == False:
             writer.writeheader()
 
         for element in batch:
@@ -47,8 +51,8 @@ def disconnect():
 
 @socketio.on('metric')
 def metric(metricData, methods=['GET', 'POST']):
-    app.logger.debug(type(metricData))
-    app.logger.debug('metric: ' + str(metricData))
+    # app.logger.debug(type(metricData))
+    # app.logger.debug('metric: ' + str(metricData))
     writeToCsv(metricData)
 
 

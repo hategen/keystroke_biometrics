@@ -1,4 +1,4 @@
-login,type,key,timestamp,inputlogin,type,key,timestamp,input
+login,type,key,timestamp,input
 Test1,keydown,Shift,1554404531698,field_hello
 Test1,keydown,H,1554404532030,field_hello
 Test1,keyup,Shift,1554404532080,field_hello
