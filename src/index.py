@@ -9,7 +9,8 @@ socketio = SocketIO(app)
 
 def writeToCsv(batch):
     has_header = False
-    fieldnames = ['login', 'type', 'key', 'timestamp', 'input']
+    fieldnames = ['login', 'type', 'key', 'timestamp', 'input', 'keypressDuration', 'keyDownTimestamp',
+                  'keyUpTimestamp']
 
     with open('metrics.csv', mode='r') as csv_file:
         line = csv_file.readline()
