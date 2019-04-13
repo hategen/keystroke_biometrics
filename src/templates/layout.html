@@ -29,6 +29,7 @@
     />
     <script type="module">
         import {setCookie} from './static/scripts/cookies.js'
+        import {attachKeylogger} from './static/scripts/keyboard.js'
 
         //auto expand textarea
         function adjust_textarea(h) {
@@ -68,12 +69,14 @@
             })
         }
 
-        document.addEventListener('keyup',e =>{
-            if(e.target.matches('textarea')){
+        document.addEventListener('keyup', e => {
+            if (e.target.matches('textarea')) {
                 adjust_textarea(e.target)
             }
         })
 
+        attachKeylogger('#hat_area', '#start_hat', '#stop_hat');
+        attachKeylogger('#pig_area', '#start_pig', '#stop_pig');
 
     </script>
 </head>
