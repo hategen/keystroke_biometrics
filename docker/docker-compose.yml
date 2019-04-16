@@ -6,8 +6,8 @@ services:
       - keystroke_biometrics_default
     volumes:
       - type: volume
-        source: portainer_data_
-        target: /data_
+        source: portainer_data_volume
+        target: /p_data
       - type: bind
         source: /var/run/docker.sock
         target: /var/run/docker.sock
@@ -35,4 +35,4 @@ networks:
     driver: bridge
 
 volumes:
-  portainer_data_:
+  portainer_data_volume:

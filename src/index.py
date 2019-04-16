@@ -3,40 +3,22 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 import csv
 import pandas as pd
+import os
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-csvPath = 'datasets/metrics.csv'
+csvPath = 'metrics.csv'
 
 
 def writeToCsv(batch):
-    has_header = False
-    fieldnames = ['login', 'type', 'key', 'timestamp', 'input', 'keypressDuration', 'keyDownTimestamp',
-                  'keyUpTimestamp']
-    try:
-        metrics = pd.read_csv(csvPath)
-    except:
-        print('Create new file '+csvPath)
-        metrics = pd.DataFrame(columns=fieldnames)
-    metrics.append(pd.DataFrame(batch), ignore_index=True)
-    metrics.to_csv(csvPath)
-    # with open('metrics.csv', mode='r') as csv_file:
-    #     line = csv_file.readline()
-    #     print(line)
-    #     sniffer = csv.Sniffer()
-    #     if len(line) > 0:
-    #         has_header = sniffer.has_header(line)
+    if (os.path.isfile(csvPath)):
+        metrics = pd.read_csv(csvPath).append(
+            pd.DataFrame(batch), ignore_index=True)
+    else:
+        metrics = pd.DataFrame(batch)
 
-    # with open('metrics.csv', mode='a+') as csv_file:
-
-    #     writer = csv.DictWriter(csv_file, fieldnames=fieldnames, delimiter=',')
-
-    #     if has_header == False:
-    #         writer.writeheader()
-
-    #     for element in batch:
-    #         writer.writerow(element)
+    metrics.to_csv(csvPath, index=False)
 
 
 @app.route("/")
