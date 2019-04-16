@@ -12,7 +12,7 @@ def writeToCsv(batch):
     fieldnames = ['login', 'type', 'key', 'timestamp', 'input', 'keypressDuration', 'keyDownTimestamp',
                   'keyUpTimestamp']
 
-    with open('metrics.csv', mode='r') as csv_file:
+    with open('metrics.csv', mode='w+') as csv_file:
         line = csv_file.readline()
         print(line)
         sniffer = csv.Sniffer()
