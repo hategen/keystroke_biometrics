@@ -1,39 +1,64 @@
-{% extends "layout.html"%}
-{% block content %}
+{% extends "layout.html"%} {% block content %}
 <script type="module">
-    import {getCookie} from './static/scripts/cookies.js'
+  import { getCookie } from "./static/scripts/cookies.js";
 
-    const userLogin = getCookie("login");
-    if (!userLogin) window.location.href = "/";
-
+  const userLogin = getCookie("login");
+  if (!userLogin) window.location.href = "/";
 </script>
 <div class="form-style-8">
-    <h2>Playground <a href="#" id="logout">Logout</a></h2>
+  <h2>Playground <a href="#" id="logout">Logout</a></h2>
 
-    <h3>
-        This is playground. Here is your daily task. Fill all fields with the
-        information above it
-    </h3>
-    <p>Write it in the textarea below: <br/>"They can ask me to get just about any hat they like"</p>
-    <textarea
-            id="hat_area"
-            placeholder="Write here text above"
-            size="5"
-            name="hat_area"
-    ></textarea>
-    <button id="start_hat">Start</button>
-    <button id="stop_hat">Stop</button>
-    <p>
-        Write it in the textarea below: <br/>"She could ride around the hall on her little pet pig"
-    </p>
-    <textarea
-            id="pig_area"
-            placeholder="Write here text above"
-            size="5"
-            name="pig_area"
-    ></textarea>
-    <button id="start_pig">Start</button>
-    <button id="stop_pig">Stop</button>
-
+  <h3>
+    This is playground. Here is your daily task. Fill all fields with the
+    information above it
+  </h3>
+  <p>
+    Write it in the textarea below: <br />"They can ask me to get just about any
+    hat they like"
+  </p>
+  <textarea
+    id="hat_area"
+    placeholder="Write here text above"
+    size="5"
+    name="hat_area"
+  ></textarea>
+  <button id="start_hat">Start</button>
+  <button id="stop_hat">Stop</button>
+  <p>
+    Write it in the textarea below: <br />"She could ride around the hall on her
+    little pet pig"
+  </p>
+  <textarea
+    id="pig_area"
+    placeholder="Write here text above"
+    size="5"
+    name="pig_area"
+  ></textarea>
+  <button id="start_pig">Start</button>
+  <button id="stop_pig">Stop</button>
+  <p>
+    Use only left hand and write it in the textarea below: <br />"qw po as lk zx
+    ,m we sd xc iu jh nb"
+  </p>
+  <textarea
+    id="lefthand_chars_area"
+    placeholder="Write here text above"
+    size="5"
+    name="lefthand_chars_area"
+  ></textarea>
+  <button id="lefthand_start_chars">Start</button>
+  <button id="lefthand_stop_chars">Stop</button>
+  <p>
+    Use only right hand and write it in the textarea below: <br />"qw po as lk
+    zx ,m we sd xc iu jh nb"
+  </p>
+  <textarea
+    id="righthand_chars_area"
+    placeholder="Write here text above"
+    size="5"
+    name="righthand_chars_area"
+  ></textarea>
+  <button id="righthand_start_chars">Start</button>
+  <button id="righthand_stop_chars">Stop</button>
 </div>
 {% endblock content %}

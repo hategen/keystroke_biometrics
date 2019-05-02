@@ -7,10 +7,12 @@ import os
 app = Flask(__name__)
 socketio = SocketIO(app)
 
-csvPath = 'metrics.csv'
+
 
 
 def writeToCsv(batch):
+    csvPath = batch[0]['login']+'.csv'
+
     if (os.path.isfile(csvPath)):
         metrics = pd.read_csv(csvPath).append(
             pd.DataFrame(batch), ignore_index=True)

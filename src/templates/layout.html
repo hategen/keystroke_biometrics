@@ -1,86 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8"/>
+  <head>
+    <meta charset="UTF-8" />
     {% if title%}
-    <title> {{title}} </title>
+    <title>{{ title }}</title>
     {% else %}
-    <title> Keystroke dynamics </title>
+    <title>Keystroke dynamics</title>
     {% endif %}
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.4.0/rxjs.umd.min.js"></script>
-    <script defer
-            type="module"
-            src="{{ url_for('static', filename = 'sockets.js') }}"
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.min.js"
     ></script>
-    <script defer
-            type="module"
-            src="{{ url_for('static', filename = 'scripts/cookies.js') }}"
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.4.0/rxjs.umd.min.js"
     ></script>
-    <script defer
-            type="module"
-            src="{{ url_for('static', filename = 'scripts/keyboard.js') }}"
+    <script
+      defer
+      type="module"
+      src="{{ url_for('static', filename = 'sockets.js') }}"
     ></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+    <script
+      defer
+      type="module"
+      src="{{ url_for('static', filename = 'scripts/cookies.js') }}"
+    ></script>
+    <script
+      defer
+      type="module"
+      src="{{ url_for('static', filename = 'scripts/keyboard.js') }}"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab"
+      rel="stylesheet"
+    />
 
     <link
-            rel="stylesheet"
-            href="{{ url_for('static', filename = 'css/style.css') }}"
+      rel="stylesheet"
+      href="{{ url_for('static', filename = 'css/style.css') }}"
     />
     <script type="module">
-        import {setCookie} from './static/scripts/cookies.js'
-        import {attachKeylogger} from './static/scripts/keyboard.js'
+      import { setCookie } from "./static/scripts/cookies.js";
+      import { attachKeylogger } from "./static/scripts/keyboard.js";
 
-        //auto expand textarea
-        function adjust_textarea(h) {
-            h.style.height = "20px";
-            h.style.height = h.scrollHeight + "px";
+      //auto expand textarea
+      function adjust_textarea(h) {
+        h.style.height = "20px";
+        h.style.height = h.scrollHeight + "px";
+      }
+
+      function logout() {
+        setCookie("login", null, 0);
+        window.location.href = "/";
+      }
+
+      function done(event) {
+        alert("Thanks for cooperation");
+      }
+
+      function login(e) {
+        const login = e.target[0].value;
+        console.warn(`You've entered as ${login}`);
+        setCookie("login", login, 1);
+        window.location.href = "/playground";
+        return false;
+      }
+
+      const form = document.getElementById("loginForm");
+      if (form) {
+        form.addEventListener("submit", e => {
+          e.preventDefault();
+          login(e);
+        });
+      }
+      const logoutButton = document.getElementById("logout");
+      if (logoutButton) {
+        logoutButton.addEventListener("click", e => {
+          e.preventDefault();
+          logout(e);
+        });
+      }
+
+      document.addEventListener("keyup", e => {
+        if (e.target.matches("textarea")) {
+          adjust_textarea(e.target);
         }
+      });
 
-        function logout() {
-            setCookie("login", null, 0);
-            window.location.href = "/";
-        }
-
-        function done(event) {
-            alert("Thanks for cooperation");
-        }
-
-        function login(e) {
-            const login = e.target[0].value;
-            console.warn(`You've entered as ${login}`);
-            setCookie("login", login, 1);
-            window.location.href = "/playground";
-            return false;
-        }
-
-        const form = document.getElementById('loginForm')
-        if (form) {
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                login(e);
-            })
-        }
-        const logoutButton = document.getElementById('logout')
-        if (logoutButton) {
-            logoutButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                logout(e);
-            })
-        }
-
-        document.addEventListener('keyup', e => {
-            if (e.target.matches('textarea')) {
-                adjust_textarea(e.target)
-            }
-        })
-
-        attachKeylogger('#hat_area', '#start_hat', '#stop_hat');
-        attachKeylogger('#pig_area', '#start_pig', '#stop_pig');
-
+      attachKeylogger("#hat_area", "#start_hat", "#stop_hat");
+      attachKeylogger("#pig_area", "#start_pig", "#stop_pig");
+      attachKeylogger(
+        "#righthand_chars_area",
+        "#righthand_start_chars",
+        "#righthand_stop_chars"
+      );
+      attachKeylogger(
+        "#lefthand_chars_area",
+        "#lefthand_start_chars",
+        "#lefthand_stop_chars"
+      );
     </script>
-</head>
-<body>
-{% block content %} {% endblock %}
-</body>
+  </head>
+  <body>
+    {% block content %} {% endblock %}
+  </body>
 </html>
